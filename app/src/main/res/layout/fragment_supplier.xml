@@ -1,39 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
+    android:padding="2dp"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    android:background="@drawable/layout_border"
     >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark">
     <TextView
         android:id="@+id/supName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginLeft="70dp"/>
+        android:textColor="@color/colorWhite"
+        android:layout_marginLeft="70dp" />
+</LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#c0c0c0"/>
-    <TextView
-        android:id="@+id/ID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/text_margin"
-        android:layout_marginTop="@dimen/text_margin"
-        android:text="ID"
-        android:textAppearance="?attr/textAppearanceListItem" />
 
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+android:layout_weight="1">
     <TextView
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/text_margin"
         android:layout_marginTop="@dimen/text_margin"
-        android:text="Name"
+        android:text="Name :-"
         android:textAppearance="?attr/textAppearanceListItem" />
 
+    <TextView
+        android:id="@+id/NameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="@dimen/text_margin"></TextView>
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
     <TextView
         android:id="@+id/Contact"
         android:layout_width="wrap_content"
@@ -43,6 +60,18 @@
         android:text="Contact"
         android:textAppearance="?attr/textAppearanceListItem" />
 
+
+    <TextView
+        android:id="@+id/ContactText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="@dimen/text_margin"></TextView>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
     <TextView
         android:id="@+id/Email"
         android:layout_width="wrap_content"
@@ -53,4 +82,13 @@
         android:text="Email"
         android:textAppearance="?attr/textAppearanceListItem" />
 
+
+    <TextView
+        android:id="@+id/EmailText"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"></TextView>
 </LinearLayout>
+</LinearLayout>
+

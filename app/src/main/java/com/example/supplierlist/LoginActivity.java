@@ -8,15 +8,32 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import 	java.lang.Thread;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class LoginActivity extends AppCompatActivity {
 
     TextView user;
     TextView pwd;
+private static String URL_LOGIN="http://192.168.0.23/MyAPI/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,45 +61,89 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email = user.getText().toString();
-                String password = pwd.getText().toString();
-                //updateUI(user);
-                //signIn(email, password);
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+                 String   password = pwd.getText().toString();
+                if(!email.isEmpty() || !password.isEmpty())
+                {
+                   Login(email,password);
+                }
+                else {
+                    user.setError("Pleae Enter Email");
+                    pwd.setError("Pleae Enter Password");
+                }
+
+            }
+
+            private void Login(final String useremail, final String userpassword) {
+                Log.d("Email", "Email: "+useremail+" Password "+userpassword);
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN, new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            Log.d("res", "reesponse  is"+response);
+
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("login");
+                            Log.d("JSA", "onResponse: jsonArray is"+jsonArray);
+                            if (success.equals("1")) {
+                                for (int i = 0; i < jsonObject.length(); i++) {
+                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    String name = object.getString("name").trim();
+                                    String email = object.getString("email").trim();
+                                    Toast.makeText(LoginActivity.this, "Welcome " + name + "", Toast.LENGTH_SHORT).show();
+
+                                   final Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    Thread thread=new Thread()
+                                  {
+                                      @Override
+                                      public void run() {
+                                          try {
+                                              Thread.sleep(10);
+                                              startActivity(intent);
+                                          } catch (Exception e) {
+                                              e.printStackTrace();
+                                          }
+                                      }
+                                  };
+                                    thread.start();
+                                }
+                            } else if(success.equals("0"))
+                            {
+                                Toast.makeText(LoginActivity.this, "ERROR LOGIN", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+//                            Toast.makeText(LoginActivity.this, "ERROR LOGGING IN", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                })
+                {
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String,String> param=new HashMap<>();
+                        param.put("email",useremail);
+                        param.put("password",userpassword);
+                        return param;
+                    }
+                };
+                RequestQueue requestQueue= Volley.newRequestQueue(LoginActivity.this);
+                   requestQueue.add(stringRequest);
 
 
+//
             }
         });
     }
 
-   /* public void onStart(){
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }*/
 
-    private boolean validateForm() {
-        boolean valid = true;
 
-        String email = user.getText().toString();
-        if (TextUtils.isEmpty(email)) {
-            user.setError("Required.");
-            valid = false;
-        } else {
-            user.setError(null);
-        }
-
-        String password = pwd.getText().toString();
-        if (TextUtils.isEmpty(password)) {
-            pwd.setError("Required.");
-            valid = false;
-        } else {
-            pwd.setError(null);
-        }
-
-        return valid;
-    }
 
 
 

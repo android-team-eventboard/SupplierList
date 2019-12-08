@@ -40,7 +40,6 @@ public class MysupplierRecyclerViewAdapter extends RecyclerView.Adapter<Mysuppli
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.tvsupName.setText("Supplier: " + (position + 1));
-        holder.tvId.setText(mValues.get(position).id);
         holder.tvEmail.setText(mValues.get(position).email);
         holder.tvContact.setText(mValues.get(position).contact);
         holder.tvName.setText(mValues.get(position).name);
@@ -65,7 +64,6 @@ public class MysupplierRecyclerViewAdapter extends RecyclerView.Adapter<Mysuppli
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView tvId;
         public final TextView tvName;
         public final TextView tvContact;
         public final TextView tvEmail;
@@ -75,10 +73,9 @@ public class MysupplierRecyclerViewAdapter extends RecyclerView.Adapter<Mysuppli
             super(view);
             mView = view;
             tvsupName = (TextView) view.findViewById(R.id.supName);
-            tvId = (TextView) view.findViewById(R.id.ID);
-            tvName = (TextView) view.findViewById(R.id.Name);
-            tvContact = (TextView) view.findViewById(R.id.Contact);
-            tvEmail = (TextView) view.findViewById(R.id.Email);
+            tvName = (TextView) view.findViewById(R.id.NameText);
+            tvContact = (TextView) view.findViewById(R.id.ContactText);
+            tvEmail = (TextView) view.findViewById(R.id.EmailText);
         }
 
         @Override
