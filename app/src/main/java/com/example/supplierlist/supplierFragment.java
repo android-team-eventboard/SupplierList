@@ -37,7 +37,6 @@ public class supplierFragment extends Fragment implements MysupplierRecyclerView
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_supplier_list, container, false);
-
         // Set the adapter
         context = view.getContext();
         ITEMS = new ArrayList<>();
@@ -50,7 +49,6 @@ public class supplierFragment extends Fragment implements MysupplierRecyclerView
         RecyclerView.LayoutManager manager = new GridLayoutManager(context, 2);
         RecyclerView recyclerView = (RecyclerView) view;
         MysupplierRecyclerViewAdapter viewAdapter = new MysupplierRecyclerViewAdapter(ITEMS, context);
-        Log.d("HELLLL", "ABCC : " + ITEMS.size());
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(viewAdapter);
         viewAdapter.setClickListener(this);
@@ -71,7 +69,6 @@ public class supplierFragment extends Fragment implements MysupplierRecyclerView
                         String email = dataObject.getString("email");
                         Supplier supplier = new Supplier(id + "", name, contact, email);
                         ITEMS.add(supplier);
-                        Log.d("HELL", "LOL : " + ITEMS.size());
                     }
                     updateIU();
                 } catch (Exception e) {
@@ -91,19 +88,12 @@ public class supplierFragment extends Fragment implements MysupplierRecyclerView
 
     @Override
     public void onDestinationClicked(Supplier supplier) {
-        // on bhoomis fragment  page
+
         Intent intent = new Intent(supplierFragment.this.getActivity(), OrganizerOrderActivity.class);
         intent.putExtra("supplierName",supplier.getName());
         intent.putExtra("supplierID",supplier.getId());
         intent.putExtra("supplierContact",supplier.getContact());
         intent.putExtra("supplierEmail",supplier.getEmail());
-
-       startActivity(intent);
-//       Intent intent=new Intent(supplierFragment.class,OrganizerOrderActivity.class);
-
-//        startActivity(intent);
-//        Toast.makeText(getContext(), supplier.toString(), Toast.LENGTH_LONG).show();
-    //getIntent here and pass the supplier object
 
     }
 }

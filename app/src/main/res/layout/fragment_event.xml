@@ -13,7 +13,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/images"
         android:id="@+id/eventImage"
         android:scaleType="fitXY"
         />
@@ -124,6 +124,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/registerbtn"
 android:text="@string/register"/>
     </LinearLayout>
 </LinearLayout>

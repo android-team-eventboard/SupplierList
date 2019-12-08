@@ -2,7 +2,6 @@ package com.example.supplierlist;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import 	java.lang.Thread;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -108,7 +106,7 @@ private static String URL_LOGIN="http://192.168.0.23/MyAPI/login.php";
                                   };
                                     thread.start();
                                 }
-                            } else if(success.equals("0"))
+                            } else
                             {
                                 Toast.makeText(LoginActivity.this, "ERROR LOGIN", Toast.LENGTH_SHORT).show();
                             }
