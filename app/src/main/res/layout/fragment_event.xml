@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    >
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher_background"
+        android:id="@+id/eventImage"
+        android:scaleType="fitXY"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+    <TextView
+        android:id="@+id/eventName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_marginTop="@dimen/text_margin"
+        android:layout_weight="0.1"
+        android:text="Event Name  :- "
+        android:textAppearance="?attr/textAppearanceListItem" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:id="@+id/eventNameData"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="15dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+   <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_marginTop="@dimen/text_margin"
+       android:layout_weight="0.1"
+        android:text="Description  :- "
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.6"
+        android:id="@+id/eventDescData"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="15dp"
+        />
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_weight="0.1"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_marginTop="@dimen/text_margin"
+        android:text="Date  :- "
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.6"
+        android:id="@+id/eventDateData"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="15dp"
+        />
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+    <TextView
+        android:id="@+id/eventtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_marginTop="@dimen/text_margin"
+        android:layout_marginBottom="20dp"
+        android:text="Time  :- "
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:id="@+id/eventTimeData"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="15dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+android:text="@string/register"/>
+    </LinearLayout>
+</LinearLayout>
