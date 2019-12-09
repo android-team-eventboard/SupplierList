@@ -94,6 +94,7 @@ public class supplierFragment extends Fragment implements MysupplierRecyclerView
         intent.putExtra("supplierID",supplier.getId());
         intent.putExtra("supplierContact",supplier.getContact());
         intent.putExtra("supplierEmail",supplier.getEmail());
-
+        startActivity(intent);
+//        Toast.makeText(getContext(), supplier.toString(), Toast.LENGTH_LONG).show();
     }
 }

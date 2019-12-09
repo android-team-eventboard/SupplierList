@@ -29,14 +29,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-    public class fragmentEventList extends Fragment implements MyEventRecyclerViewAdapter.onBookButtonClicked{
+//public class fragmentEventList extends Fragment implements MysupplierRecyclerViewAdapter.onSupplierItemClicked {
+public class fragmentEventList extends Fragment implements MyEventRecyclerViewAdapter.onBookButtonClicked{
 
     private static final String eventlist_data_url = "http://192.168.0.23/MyAPI/connection.php";
 
     ArrayList<EventData> ITEMS;
     public Context context;
     public View view;
-//String[] urls={"https://picsum.photos/id/0/5616/3744","https://picsum.photos/id/1/5616/3744","https://picsum.photos/id/10/2500/1667","https://picsum.photos/id/100/2500/1656","https://picsum.photos/id/1000/5626/3635","https://picsum.photos/id/1001/5616/3744","https://picsum.photos/id/1002/4312/2868","https://picsum.photos/id/1003/1181/1772","https://picsum.photos/id/1008/5616/3744","https://picsum.photos/id/101/2621/1747"};
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ import java.util.List;
         RecyclerView.LayoutManager manager = new GridLayoutManager(context, 1);
         RecyclerView recyclerView = (RecyclerView) view;
         MyEventRecyclerViewAdapter viewAdapter = new MyEventRecyclerViewAdapter(ITEMS, context);
+        Log.d("HELLLL", "poii : " + ITEMS.size());
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(viewAdapter);
         viewAdapter.setClickListener(this);
@@ -64,6 +66,7 @@ import java.util.List;
         StringRequest sr = new StringRequest(Request.Method.GET, eventlist_data_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("newdataoutput", response);
                 try {
                     JSONArray data = new JSONArray(response);
 //                    LOOP through response
@@ -73,9 +76,12 @@ import java.util.List;
                         String description = dataObject.getString("desc");
                         String date = dataObject.getString("date");
                         String time = dataObject.getString("time");
-//                        String image=urls[i];
+//                        Supplier supplier = new Supplier(id + "", name, contact, email);
+                        Log.d("newdataoutput", response);
+//EventListData eventList=new EventListData(name,description,date,time);
                         EventData eventData=new EventData(name,description,date,time);
                         ITEMS.add(eventData);
+                        Log.d("HELL", "LOL : " + ITEMS.size());
                     }
                     updateIU();
                 } catch (Exception e) {
@@ -95,13 +101,11 @@ import java.util.List;
 
     @Override
     public void onDestinationDataClicked(EventData eventData) {
-
-        Intent intent = new Intent(view.getContext(), UserRegistration.class);
-//        intent.putExtra("eventImage",eventData.getImageView());
+        Intent intent = new Intent(fragmentEventList.this.getActivity(), UserRegistration.class);
         intent.putExtra("eventName",eventData.getName());
         intent.putExtra("eventDesc",eventData.getDescription());
-        intent.putExtra("eventDate",eventData.getDate());
         intent.putExtra("eventTime",eventData.getTime());
+        intent.putExtra("eventDate",eventData.getDate());
         startActivity(intent);
     }
 }
