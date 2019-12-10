@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/colorWhite" />
+    <item android:drawable="@color/colorBlack" />
     <item>
         <bitmap
             android:gravity="fill_horizontal"
-            android:src="@drawable/image"
+            android:src="@drawable/myimage"
         />
     </item>
 </layer-list>
