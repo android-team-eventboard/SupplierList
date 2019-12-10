@@ -27,7 +27,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class supplierFragment extends Fragment implements MysupplierRecyclerViewAdapter.onSupplierItemClicked {
-    private static final String supplier_data_url = "http://192.168.0.23/MyAPI/supplier_list_connection.php";
+    private static final String supplier_data_url = "http://10.111.16.49/MyAPI/supplier_list_connection.php";
+//    private static final String supplier_data_url = "http://192.168.0.23/MyAPI/supplier_list_connection.php";
 
     ArrayList<Supplier> ITEMS;
     public Context context;

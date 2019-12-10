@@ -32,7 +32,8 @@ import java.util.List;
 //public class fragmentEventList extends Fragment implements MysupplierRecyclerViewAdapter.onSupplierItemClicked {
 public class fragmentEventList extends Fragment implements MyEventRecyclerViewAdapter.onBookButtonClicked{
 
-    private static final String eventlist_data_url = "http://192.168.0.23/MyAPI/connection.php";
+    private static final String eventlist_data_url = "http://10.111.16.49/MyAPI/connection.php";
+//    private static final String eventlist_data_url = "http://192.168.0.23/MyAPI/connection.php";
 
     ArrayList<EventData> ITEMS;
     public Context context;

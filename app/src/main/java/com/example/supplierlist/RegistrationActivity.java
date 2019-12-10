@@ -33,11 +33,13 @@ public class RegistrationActivity extends AppCompatActivity {
     TextView userName;
     TextView emailtv;
     TextView pwd;
+    TextView type;
     String name;
     String email;
     String password;
-
-    private static String URL_REG="http://192.168.0.23/MyAPI/register.php";
+    String typeofsignup;
+    private static final String URL_REG = "http://10.111.16.49/MyAPI/register.php";
+//    private static String URL_REG="http://192.168.0.23/MyAPI/register.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,10 +76,12 @@ registrationValidate();
         userName = findViewById(R.id.tv_username_signup);
         emailtv=findViewById(R.id.tv_email_signup);
         pwd = findViewById(R.id.tv_password_signup);
+        type=findViewById(R.id.tv_type_of_signup);
 
         name= userName.getText().toString();
         email = emailtv.getText().toString();
          password = pwd.getText().toString();
+         typeofsignup=type.getText().toString();
 
          //              Create account here in database
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REG, new Response.Listener<String>() {
@@ -107,6 +111,7 @@ registrationValidate();
                 param.put("name",name);
             param.put("email",email);
             param.put("password",password);
+            param.put("type",typeofsignup);
                 return param;
             }
         };

@@ -31,7 +31,9 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView user;
     TextView pwd;
-private static String URL_LOGIN="http://192.168.0.23/MyAPI/login.php";
+    String type;
+    private static final String URL_LOGIN = "http://10.111.16.49/MyAPI/login.php";
+//private static String URL_LOGIN="http://192.168.0.23/MyAPI/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,28 +91,46 @@ private static String URL_LOGIN="http://192.168.0.23/MyAPI/login.php";
                                     JSONObject object = jsonArray.getJSONObject(i);
                                     String name = object.getString("name").trim();
                                     String email = object.getString("email").trim();
+                                    type = object.getString("type");
+                                    Log.d("Type", "Type is "+type);
                                     Toast.makeText(LoginActivity.this, "Welcome " + name + "", Toast.LENGTH_SHORT).show();
-
-                                   final Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    Thread thread=new Thread()
-                                  {
-                                      @Override
-                                      public void run() {
-                                          try {
-                                              Thread.sleep(10);
-                                              startActivity(intent);
-                                          } catch (Exception e) {
-                                              e.printStackTrace();
-                                          }
-                                      }
-                                  };
-                                    thread.start();
+                                    if (type.equals("owner")) {
+                                        Log.d("owner", "onResponse: Inside owner");
+                                        final Intent intent = new Intent(LoginActivity.this, OwnerActivity.class);
+                                        Thread thread = new Thread() {
+                                            @Override
+                                            public void run() {
+                                                try {
+                                                    Thread.sleep(10);
+                                                    startActivity(intent);
+                                                } catch (Exception e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        };
+                                        thread.start();
+                                    }else if(type.equals("user"))
+                                    {
+                                        final Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        Thread thread = new Thread() {
+                                            @Override
+                                            public void run() {
+                                                try {
+                                                    Thread.sleep(10);
+                                                    startActivity(intent);
+                                                } catch (Exception e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        };
+                                        thread.start();
+                                    }
+                                    else {
+                                        Toast.makeText(LoginActivity.this, "ERROR LOGIN", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            } else
-                            {
-                                Toast.makeText(LoginActivity.this, "ERROR LOGIN", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
+                                }
+                            } catch (JSONException e) {
                             e.printStackTrace();
 //                            Toast.makeText(LoginActivity.this, "ERROR LOGGING IN", Toast.LENGTH_SHORT).show();
 

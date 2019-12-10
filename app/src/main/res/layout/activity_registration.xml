@@ -76,6 +76,14 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="15dp" />
+            \
+            <EditText
+                android:id="@+id/tv_type_of_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bottom"
+                android:hint="type (owner / user)"
+                android:padding="15dp" />
 
 
             <Button
@@ -103,6 +111,7 @@
                 android:textColor="#FFF"
                 android:gravity="center"
                 android:fontFamily="sans-serif"/>
+
 
     </LinearLayout>
 
