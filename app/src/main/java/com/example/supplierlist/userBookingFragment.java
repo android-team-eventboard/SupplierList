@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //public class fragmentEventList extends Fragment implements MysupplierRecyclerViewAdapter.onSupplierItemClicked {
-public class fragmentEventList extends Fragment implements MyEventRecyclerViewAdapter.onBookButtonClicked{
+public class userBookingFragment extends Fragment implements MyEventRecyclerViewAdapter.onBookButtonClicked{
 
     private static final String eventlist_data_url = "http://10.111.16.49/MyAPI/connection.php";
 //    private static final String eventlist_data_url = "http://192.168.0.23/MyAPI/connection.php";
@@ -100,7 +100,7 @@ public class fragmentEventList extends Fragment implements MyEventRecyclerViewAd
 
     @Override
     public void onDestinationDataClicked(EventData eventData) {
-        Intent intent = new Intent(fragmentEventList.this.getActivity(), UserRegistration.class);
+        Intent intent = new Intent(userBookingFragment.this.getActivity(), UserRegistration.class);
         intent.putExtra("eventName",eventData.getName());
         intent.putExtra("eventDesc",eventData.getDescription());
         intent.putExtra("eventTime",eventData.getTime());

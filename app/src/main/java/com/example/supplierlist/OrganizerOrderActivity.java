@@ -1,6 +1,8 @@
 package com.example.supplierlist;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import  android.content.Intent;
 
@@ -33,4 +35,16 @@ private TextView name,email,contact;
 
     }
 
+    public void openLocation(View view) {
+        String location = ((TextView)findViewById(R.id.suplier_address)).getText().toString();
+
+        Uri geo = Uri.parse("geo:50.8549217,-130.2094884?q=" + location);
+        Intent intent = new Intent(Intent.ACTION_VIEW, geo);
+        intent.setPackage("com.google.android.apps.maps");
+        //intent.setData(geo);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
 }

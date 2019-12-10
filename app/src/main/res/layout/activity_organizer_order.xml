@@ -143,6 +143,7 @@
                     android:text="205 Humber College Blvd, Etobicoke, ON M9W 5L7"
                     android:padding="5dp"
                     android:textSize="15sp"
+                    android:onClick="openLocation"
                     />
 
             </LinearLayout>
