@@ -1,6 +1,7 @@
 package com.example.supplierlist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -8,6 +9,8 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +31,8 @@ public class UserRegistration extends AppCompatActivity {
 
     public TextView name,desc,date,time;
     public ImageView imgview;
+    public Button bookingbtn;
+    FragmentManager fm ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +46,13 @@ public class UserRegistration extends AppCompatActivity {
         String eventDate=intent.getStringExtra("eventDate");
         String eventTime=intent.getStringExtra("eventTime");
 
+
         imgview=(ImageView)findViewById(R.id.eventImage);
         name=(TextView)findViewById(R.id.eventNameData);
         desc=(TextView) findViewById(R.id.eventDescData);
         date=(TextView) findViewById(R.id.eventDateData);
         time=(TextView)findViewById(R.id.eventTimeData);
+        bookingbtn=(Button)findViewById(R.id.bookingbtn);
 
 //        int id = getResources().getIdentifier("com.example.supplierlist.:drawable/images.jpg", null, null);
 //        imgview.setImageResource(id);
@@ -60,6 +67,27 @@ public class UserRegistration extends AppCompatActivity {
         desc.setText(eventDesc);
         date.setText(eventDate);
         time.setText(eventTime);
+
+        bookingbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(UserRegistration.this, "Booked Sucessfully", Toast.LENGTH_SHORT).show();
+                final Intent intent = new Intent(UserRegistration.this, MainActivity.class);
+                Thread thread = new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(10);
+                            startActivity(intent);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                thread.start();
+
+            }
+        });
 
     }
 }

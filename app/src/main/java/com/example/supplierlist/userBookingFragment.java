@@ -18,8 +18,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.supplierlist.dummy.EventListData;
-import com.example.supplierlist.dummy.EventListData.EventData;
+import com.example.supplierlist.dummy.BookedHistory;
+import com.example.supplierlist.dummy.BookedHistory.BookedData;
 
 
 
@@ -30,12 +30,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 //public class fragmentEventList extends Fragment implements MysupplierRecyclerViewAdapter.onSupplierItemClicked {
-public class userBookingFragment extends Fragment implements MyEventRecyclerViewAdapter.onBookButtonClicked{
+public class userBookingFragment extends Fragment implements userBookingRecyclerView.onBookButtonClicked{
 
-    private static final String eventlist_data_url = "http://10.111.16.49/MyAPI/connection.php";
+    private static final String bookeddata_data_url = "http://10.111.16.49/MyAPI/list_booking_history.php";
 //    private static final String eventlist_data_url = "http://192.168.0.23/MyAPI/connection.php";
 
-    ArrayList<EventData> ITEMS;
+    ArrayList<BookedData> ITEMS;
     public Context context;
     public View view;
 
@@ -47,7 +47,7 @@ public class userBookingFragment extends Fragment implements MyEventRecyclerView
         // Set the adapter
         context = view.getContext();
         ITEMS = new ArrayList<>();
-        EventListData eventListData=new EventListData(context);
+         BookedHistory bh=new BookedHistory(context);
         loadData();
 
         return view;
@@ -56,15 +56,14 @@ public class userBookingFragment extends Fragment implements MyEventRecyclerView
     public void updateIU() {
         RecyclerView.LayoutManager manager = new GridLayoutManager(context, 1);
         RecyclerView recyclerView = (RecyclerView) view;
-        MyEventRecyclerViewAdapter viewAdapter = new MyEventRecyclerViewAdapter(ITEMS, context);
-        Log.d("HELLLL", "poii : " + ITEMS.size());
+        userBookingRecyclerView viewAdapter = new userBookingRecyclerView(ITEMS, context);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(viewAdapter);
         viewAdapter.setClickListener(this);
     }
 
     public void loadData() {
-        StringRequest sr = new StringRequest(Request.Method.GET, eventlist_data_url, new Response.Listener<String>() {
+        StringRequest sr = new StringRequest(Request.Method.GET, bookeddata_data_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("newdataoutput", response);
@@ -74,13 +73,11 @@ public class userBookingFragment extends Fragment implements MyEventRecyclerView
                     for (int i = 0; i < data.length(); i++) {
                         JSONObject dataObject = data.getJSONObject(i);
                         String name = dataObject.getString("name");
-                        String description = dataObject.getString("desc");
+                        String description = dataObject.getString("description");
                         String date = dataObject.getString("date");
                         String time = dataObject.getString("time");
-                        Log.d("newdataoutput", response);
-                        EventData eventData=new EventData(name,description,date,time);
-                        ITEMS.add(eventData);
-                        Log.d("HELL", "LOL : " + ITEMS.size());
+                        BookedData bd=new BookedData(name,description,date,time);
+                        ITEMS.add(bd);
                     }
                     updateIU();
                 } catch (Exception e) {
@@ -99,12 +96,15 @@ public class userBookingFragment extends Fragment implements MyEventRecyclerView
     }
 
     @Override
-    public void onDestinationDataClicked(EventData eventData) {
-        Intent intent = new Intent(userBookingFragment.this.getActivity(), UserRegistration.class);
-        intent.putExtra("eventName",eventData.getName());
-        intent.putExtra("eventDesc",eventData.getDescription());
-        intent.putExtra("eventTime",eventData.getTime());
-        intent.putExtra("eventDate",eventData.getDate());
-        startActivity(intent);
+    public void onDestinationDataClicked(BookedData bookedData) {
+        Toast.makeText(context, bookedData.getName(), Toast.LENGTH_SHORT).show();
+        //        Intent intent = new Intent(userBookingFragment.this.getActivity(), UserRegistration.class);
+//        intent.putExtra("eventName",bookedData.getName());
+//        intent.putExtra("eventDesc",bookedData.getDescription());
+//        intent.putExtra("eventTime",bookedData.getTime());
+//        intent.putExtra("eventDate",bookedData.getDate());
+//        startActivity(intent);
     }
+
+
 }

@@ -14,14 +14,14 @@ public class BookedHistory extends AppCompatActivity {
 
     public static final List<com.example.supplierlist.dummy.BookedHistory> ITEMS = new ArrayList<BookedHistory>();
 
-    public static class EventData{
+    public static class BookedData{
         public String name;
         public String description;
         public String time;
         public String date;
 
 
-        public EventData( String name, String description, String time, String date) {
+        public BookedData( String name, String description, String time, String date) {
             this.name = name;
             this.description = description;
             this.time = time;

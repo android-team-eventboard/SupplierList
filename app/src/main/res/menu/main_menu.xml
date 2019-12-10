@@ -9,4 +9,13 @@
         android:title="Event List"
         app:showAsAction="never"/>
 
+    <item android:id="@+id/userBookingList"
+        android:title="User Booking"
+        app:showAsAction="never"></item>
+
+    <item android:id="@+id/search"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 </menu>

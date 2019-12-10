@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.supplierlist.dummy.SupplierContent;
@@ -41,6 +42,29 @@ public class MainActivity extends AppCompatActivity {
             fragmentEventList ef=new fragmentEventList();
             fm.beginTransaction().add(R.id.main_frame,ef).commit();
 
+        }
+        else if(item.getItemId() == R.id.userBookingList)
+        {
+
+            userBookingFragment ub=new userBookingFragment();
+            fm.beginTransaction().add(R.id.main_frame,ub).commit();
+        }
+        else if(item.getItemId() == R.id.search){
+
+            // MenuItem searchitem = item.getIte;
+            SearchView searchView = (SearchView) item.getActionView();
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    return false;
+                }
+            });
         }
         return true;
         }

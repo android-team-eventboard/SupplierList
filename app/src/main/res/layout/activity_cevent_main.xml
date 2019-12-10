@@ -7,15 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".CEventMain"
     android:orientation="horizontal"
-    android:weightSum="10" >
+    android:weightSum="10"
+    android:background="@drawable/my_gradient">
 
-    <LinearLayout
-        android:id="@+id/sidebargradient"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1.5"
-        android:orientation="vertical"
-        android:background="@drawable/my_gradient"/>
 
     <FrameLayout
         android:layout_width="0dp"
@@ -23,8 +17,6 @@
         android:id="@+id/eventframe"
         android:paddingTop="50dp"
         android:layout_weight="8.5">
-
-
     </FrameLayout>
 
 
