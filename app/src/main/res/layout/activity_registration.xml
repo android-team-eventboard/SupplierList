@@ -13,35 +13,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="550dp"
         android:gravity="fill_vertical"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_alignParentTop="true"
-            android:layout_above="@id/input_group"
-            android:layout_marginBottom="25dp">
+            android:orientation="vertical">
 
             <TextView
+
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="85dp"
                 android:fontFamily="sans-serif"
+                android:gravity="center"
                 android:text="SIGN UP"
                 android:textColor="#FFFFFF"
-                android:gravity="bottom|center"
-                android:textSize="20sp"/>
-
-    </LinearLayout>
+                android:textSize="20sp" />
 
 
-        <LinearLayout
             android:id="@+id/input_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"

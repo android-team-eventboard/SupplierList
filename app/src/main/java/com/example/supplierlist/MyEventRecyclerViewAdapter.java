@@ -41,9 +41,9 @@ public class MyEventRecyclerViewAdapter extends RecyclerView.Adapter<MyEventRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.tvName.setText(eventList.get(position).name);
-        holder.tvDate.setText(eventList.get(position).description);
-        holder.tvDescription.setText(eventList.get(position).time);
-        holder.tvTime.setText(eventList.get(position).date);
+        holder.tvDate.setText(eventList.get(position).date);
+        holder.tvDescription.setText(eventList.get(position).description);
+        holder.tvTime.setText(eventList.get(position).time);
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
