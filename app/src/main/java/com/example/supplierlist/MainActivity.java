@@ -26,10 +26,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-//                    case R.id.action_recents:
-//                        supplierFragment s = new supplierFragment();
-//                        fm.beginTransaction().add(R.id.main_frame,s).commit();
-//                        break;
                     case R.id.logout:
                         Intent intent = new Intent(MainActivity.this,LoginActivity.class);
                         break;
